@@ -1,3 +1,6 @@
 *.a 
 *.o
 .DS_Store
+a.out
+server.o
+client.o
