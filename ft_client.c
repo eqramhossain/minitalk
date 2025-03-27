@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_client.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:22:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/26 15:18:05 by ehossain         ###   ########.fr       */
+/*   Created: 2025/03/24 12:23:45 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/27 15:00:28 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-// # include "libft.h"
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+int	main(void)
+{
+	ft_putstr_fd("Use case: [./client.o] [PID_NUM] [String_to_print]", 2);
+	return (0);
+}

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_server.c                                        :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:23:52 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/26 17:32:00 by ehossain         ###   ########.fr       */
+/*   Created: 2025/03/24 12:22:35 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/27 15:03:30 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-int	main(int ac, char *av[])
-{
-	int	pid;
+# include "./libft/include/libft.h"
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-	pid = getpid();
-	printf("PID = %d\n", pid);
-	return (0);
-}
+#endif

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_client.c                                        :+:      :+:    :+:   */
+/*   ft_server.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:23:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/26 14:32:26 by ehossain         ###   ########.fr       */
+/*   Created: 2025/03/24 12:23:52 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/27 14:59:24 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minitalk.h"
+#include "minitalk.h"
 
-#include <stdio.h>
-#include <unistd.h>
-
-int	main(int ac, char *av[])
+void	ft_handler(int signal)
 {
+	printf("signal = %d\n", signal);
+}
+
+int	main(void)
+{
+	// struct sigaction	sa;
+	//
+	// sa.sa_handler = ft_handler;
+	// sigemptyset(sa.sa_mask);
+	// sa.sa_flags = SA_RESTART;
+	// sigaction(SIGINT, &sa, NULL);
+	ft_handler(43);
+	return (0);
 }
