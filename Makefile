@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+           #
 #    Created: 2025/03/23 16:56:16 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/28 14:56:02 by ehossain         ###   ########.fr        #
+#    Updated: 2025/03/29 14:14:28 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,26 +28,26 @@ all: $(SERVER_NAME) $(CLIENT_NAME)
 
 $(SERVER_NAME) : $(SOURCE_SERVER) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(SERVER_NAME) $(SOURCE_SERVER) -L$(LIBFT_PATH) -lft
-	@echo "server is complied"
+	@echo "Server is complied"
 
 $(CLIENT_NAME) : $(SOURCE_CLIENT) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(CLIENT_NAME) $(SOURCE_CLIENT) -L$(LIBFT_PATH) -lft
-	@echo "client is complied"
+	@echo "Client is complied"
 
 $(SERVER_NAME_BONUS) : $(SOURCE_SERVER_BONUS) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(SERVER_NAME_BONUS) $(SOURCE_SERVER_BONUS) -L$(LIBFT_PATH) -lft
-	@echo "server is complied"
+	@echo "Server_Bonus  is complied"
 
 $(CLIENT_NAME_BONUS) : $(SOURCE_CLIENT_BONUS) $(LIBFT)
 	@$(CC) $(CFLAGS) -o $(CLIENT_NAME_BONUS) $(SOURCE_CLIENT_BONUS) -L$(LIBFT_PATH) -lft
-	@echo "client is complied"
+	@echo "Client_Bonous is complied"
 
 $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_PATH)
 
 clean:
 	@$(MAKE) clean -C $(LIBFT_PATH)
-	@echo "libft obj file removed" 
+	@echo "libft obj file removed"
 
 fclean: clean
 	@$(MAKE) fclean -C $(LIBFT_PATH)
