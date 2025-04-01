@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+           #
 #    Created: 2025/03/23 16:56:16 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/29 14:14:28 by ehossain         ###   ########.fr        #
+#    Updated: 2025/04/01 21:06:05 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SOURCE_CLIENT_BONUS = ft_client_bonus.c
 LIBFT_PATH = libft
 LIBFT = $(LIBFT_PATH)/libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 MAKE = make --no-print-directory
 
 all: $(SERVER_NAME) $(CLIENT_NAME)
