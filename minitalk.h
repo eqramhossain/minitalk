@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+          */
 /*   Created: 2025/03/24 12:22:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/01 21:19:42 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:36:23 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,11 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <unistd.h>
+
+# ifndef PID_MAX
+#  define PID_MAX 4194304
+# endif
+
+void	ft_signal_handler(int signal);
 
 #endif
