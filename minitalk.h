@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+          */
 /*   Created: 2025/03/24 12:22:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/02 14:36:23 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:47:03 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #  define PID_MAX 4194304
 # endif
 
-void	ft_signal_handler(int signal);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100000
+# endif
 
 #endif
