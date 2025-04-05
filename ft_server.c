@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:23:52 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/03 19:06:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/04/05 19:16:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 static void	ft_print_message(unsigned char c)
 {
-	static char		buffer[100000];
+	static char		buffer[1000000];
 	static size_t	buffer_index = 0;
 
-	if (c == '\0') // End of message detected
+	if (c == '\0')
 	{
-		if (buffer_index > 0) // Only print if there's something in the buffer
+		if (buffer_index > 0)
 		{
 			write(1, buffer, buffer_index);
-			write(1, "\n", 1); // Print a newline after the message
+			write(1, "\n", 1);
 		}
-		buffer_index = 0; // Reset the buffer for the next message
+		buffer_index = 0;
 	}
 	else
 	{
-		if (buffer_index < sizeof(buffer) - 1) // Prevent buffer overflow
-		{
-			buffer[buffer_index++] = c; // Store character in buffer
-		}
-		else // If buffer is full, print and reset
+		if (buffer_index < sizeof(buffer) - 1)
+			buffer[buffer_index++] = c;
+		else
 		{
 			write(1, buffer, buffer_index);
 			buffer_index = 0;
-			buffer[buffer_index++] = c; // Store new character in buffer
+			buffer[buffer_index++] = c;
 		}
 	}
 }

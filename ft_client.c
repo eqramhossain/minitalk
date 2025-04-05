@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:23:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/03 18:59:23 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/04/05 09:50:07 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_send_one_char(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else if (((c >> byte) & 1) == 1)
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(50);
 		byte--;
 	}
 }
