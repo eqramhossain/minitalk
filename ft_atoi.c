@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 19:06:09 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/19 09:01:14 by ehossain         ###   ########.fr       */
+/*   Created: 2024/11/13 16:26:21 by ehossain          #+#    #+#             */
+/*   Updated: 2025/04/08 16:59:28 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t			i;
-	unsigned char	*ptr_s1;
-	unsigned char	*ptr_s2;
+	int	i;
+	int	result;
+	int	signe;
 
 	i = 0;
-	ptr_s1 = (unsigned char *)s1;
-	ptr_s2 = (unsigned char *)s2;
-	while (ptr_s1[i] == ptr_s2[i] && (ptr_s1[i]) && (ptr_s2[i]) && (i < n))
+	result = 0;
+	signe = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
+		if (nptr[i] == '-')
+		{
+			signe = signe * -1;
+		}
 		i++;
 	}
-	if (n == i)
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		return (0);
+		result = result * 10 + (nptr[i] - '0');
+		i++;
 	}
-	return (ptr_s1[i] - ptr_s2[i]);
+	return (result * signe);
 }

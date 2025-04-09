@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+          */
-/*   Created: 2025/03/24 12:22:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/09 09:44:29 by ehossain         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 10:27:43 by ehossain          #+#    #+#             */
+/*   Updated: 2025/04/09 10:35:36 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <signal.h>
 # include <stdio.h>
@@ -45,7 +45,7 @@ void	ft_send_one_char(char c, int pid);
 
 void	ft_signal_handler(int signal, siginfo_t *info, void *empty);
 void	ft_server_init(void);
-void	ft_decrypt_char(int signal);
+void	ft_decrypt_char(int signal, siginfo_t *info);
 void	ft_manage_buffer(char c);
 
 /*              END           */

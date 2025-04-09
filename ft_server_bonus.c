@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_server.c                                        :+:      :+:    :+:   */
+/*   ft_server_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:23:52 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/09 10:07:40 by ehossain         ###   ########.fr       */
+/*   Created: 2025/04/09 10:11:01 by ehossain          #+#    #+#             */
+/*   Updated: 2025/04/09 10:36:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	main(void)
 {
@@ -50,13 +50,13 @@ void	ft_signal_handler(int signal, siginfo_t *info, void *empty)
 {
 	(void)empty;
 	if (signal == SIGUSR1)
-		ft_decrypt_char(signal);
+		ft_decrypt_char(signal, info);
 	if (signal == SIGUSR2)
-		ft_decrypt_char(signal);
+		ft_decrypt_char(signal, info);
 	kill(info->si_pid, SIGUSR1);
 }
 
-void	ft_decrypt_char(int signal)
+void	ft_decrypt_char(int signal, siginfo_t *info)
 {
 	static char	c = 0;
 	static int	bit = 0;
@@ -72,6 +72,8 @@ void	ft_decrypt_char(int signal)
 	if (bit == 8)
 	{
 		ft_manage_buffer(c);
+		if (c == '\0')
+			kill(info->si_pid, SIGUSR2);
 		c = 0;
 		bit = 0;
 	}

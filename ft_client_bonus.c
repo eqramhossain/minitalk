@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_client.c                                        :+:      :+:    :+:   */
+/*   ft_client_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:23:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/04/09 10:06:27 by ehossain         ###   ########.fr       */
+/*   Created: 2025/04/09 10:11:42 by ehossain          #+#    #+#             */
+/*   Updated: 2025/04/09 10:13:18 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static volatile sig_atomic_t	g_signal_received = 0;
 
@@ -42,7 +42,7 @@ void	ft_client_init(void)
 	signal.sa_flags = SA_SIGINFO;
 	sigemptyset(&signal.sa_mask);
 	sigaction(SIGUSR1, &signal, NULL);
-	// sigaction(SIGUSR2, &signal, NULL);
+	sigaction(SIGUSR2, &signal, NULL);
 	return ;
 }
 
@@ -52,8 +52,11 @@ void	ft_signal_handler(int signal, siginfo_t *info, void *empty)
 	(void)info;
 	if (signal == SIGUSR1)
 		g_signal_received = 1;
-	// if (signal == SIGUSR2)
-	// exit(0);
+	if (signal == SIGUSR2)
+	{
+		ft_putstr("Signal Confirmed by the server");
+		exit(0);
+	}
 }
 
 void	ft_send_message(const char *str, int pid)

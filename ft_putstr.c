@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 11:17:31 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/17 11:01:31 by ehossain         ###   ########.fr       */
+/*   Created: 2025/04/08 16:54:52 by ehossain          #+#    #+#             */
+/*   Updated: 2025/04/08 16:56:43 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_putchar(const char c)
 {
-	size_t			i;
-	unsigned char	*ptr;
+	write(1, &c, 1);
+}
+
+void	ft_putstr(const char *str)
+{
+	int	i;
 
 	i = 0;
-	ptr = (unsigned char *)s;
-	while (i < n)
+	while (str[i])
 	{
-		ptr[i] = c;
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (s);
 }
