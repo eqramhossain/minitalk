@@ -1,3 +1,5 @@
+# Minitalk
+
 Hello World!
 Before starting reading this article about Minitalk you should have a minimum idea about what is a process and signal in unix like operating system. I will be explaining the functions that you need to learn to do this project let's go.
 
@@ -14,10 +16,28 @@ The function returns a integer value of type pid_t and does not take any argumen
 Error:
 This function is always successful.
 
-Example:![[getpid_1.png]]
+Example:
+```C
+#include <stdio.h>
+#include <unistd.h>
+
+int	main(void)
+{
+	int	pid;
+
+	pid = getpid();
+	printf("pid = %d\n", pid);
+	return (0);
+}
+```
 
 Output:
-![[getpid_2.png]]
+```C
+➜  minitalk ./getpid
+pid = 45194
+
+```
+
 ## sleep - sleep for a number of seconds
 
 This function make sleep your program. This function is also find in the `#include <unistd.h>` library. 
@@ -31,9 +51,36 @@ Definition:
 This function sleep your program for the `seconds` amount of time. This function is as simple as water. If you want to go in details you can do you own research i will not go into that.
 
 Example:
-![[sleep_1.png]]
+```C
+#include <stdio.h>
+#include <unistd.h>
 
-Output: ![[sleep_2.png]]
+int	main(void)
+{
+	int	i;
+
+	i = 0;
+	while (i <= 5)
+	{
+		sleep(i);
+		printf("sleeping for %d sec\n", i);
+		i++;
+	}
+	return (0);
+}
+```
+
+Output: 
+```C
+➜  minitalk ./sleep
+sleeping for 0 sec
+sleeping for 1 sec
+sleeping for 2 sec
+sleeping for 3 sec
+sleeping for 4 sec
+sleeping for 5 sec
+
+```
 
 ## usleep - sleep for a number of microseconds
 
@@ -45,13 +92,41 @@ unsigned int sleep(unsigned int seconds);
 ```
 
 Example:
-> [!info] 
-> `1000000` microseconds is equal to `1` seconds.
 
-![[usleep_1.png]]
+💡info 
+`1000000` microseconds is equal to `1` seconds.
+
+```C
+#include <stdio.h>
+#include <unistd.h>
+
+int	main(void)
+{
+	int	i;
+
+	i = 1000000;
+	// 1000000 micoseconds == 1 seconds
+	while (i <= 5000000)
+	{
+		usleep(i);
+		printf("sleeping for %d microsecond\n", i);
+		i = i + 1000000;
+	}
+	return (0);
+}
+```
 
 Output:
-![[usleep_2.png]]
+```C
+➜  minitalk ./usleep
+sleeping for 1000000 microsecond
+sleeping for 2000000 microsecond
+sleeping for 3000000 microsecond
+sleeping for 4000000 microsecond
+sleeping for 5000000 microsecond
+
+```
+
 ## pause - wait for signal
 This function pause the program until a signal is received. It does not take any parameter it is also found in the `#include <unistd.h>`. This function is usful for the sever. As the sever starts up it prints it's PID and the we `pause` until a signal is received.
 
@@ -61,16 +136,42 @@ int pause(void);
 ```
 
 Example:
-![[pause_1.png]]
+```C
+#include <stdio.h>
+#include <unistd.h>
+
+int	main(void)
+{
+	int	pid;
+
+	pid = getpid();
+	if (pid <= 0)
+	{
+		printf("PID Error\n");
+		return (1);
+	}
+	printf("Current porcess PID = %d\n", pid);
+	printf("Waiting for Signal\n");
+	while (1)
+		pause();
+	return (0);
+}
+```
+
 Output:
-![[pause_2.png]]
+```C
+➜  minitalk ./pause
+Current porcess PID = 45230
+Waiting for Signal
+
+```
 
 ## kill - send signal to a process
 
 This function sounds like its dangerous trust me it is not how its sound like.
-> [!info]
-> There is actually ==2 kill== we need to learn one of them is a shell command the other is a function found in the library
-> `#include <signal.h>`
+
+💡info 
+There is actually 2 kill we need to learn one of them is a shell command the other is a function found in the library `#include <signal.h>`
 
 I will be explaining the `kill` function that we will be using in out program. The `kill()` function send signal to any process. It takes 2 things a parameter the `pid` of the process and the signal to be send.
 
@@ -83,10 +184,31 @@ Example:
 Remember the `./pause` program above that we did for waiting for a signal. We are going to use the `./pause` program here for this example.
 Imagine we are waiting for a signal in the `./pause` program and we will do a program that will send a signal to the process that will terminated the `./pause` program.
 
-![[kill_1.png]]
+```C
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int	main(int ac, char *av[])
+{
+	(void)ac;
+	kill(atoi(av[1]), 9);
+	return (0);
+}
+```
 
 Output:
-![[kill_2.png]]
+
+```C
+➜  minitalk ./kill 45239
+
+--------------------------------
+➜  minitalk ./pause
+Current porcess PID = 45239
+Waiting for Signal
+[1]    45239 killed     ./pause
+--------------------------------
+```
 
 ## signal()
 ## sigemptyset()
